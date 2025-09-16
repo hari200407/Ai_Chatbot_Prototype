@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 
 # Initialize OpenAI client (make sure you set your API key)
-client = OpenAI(api_key="YOUR_OPENAI_API_KEY")
+client = openai(api_key="YOUR_OPENAI_API_KEY")
 
 st.set_page_config(page_title="AI Chatbot Prototype", page_icon="🤖")
 
