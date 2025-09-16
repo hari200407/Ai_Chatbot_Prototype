@@ -1,8 +1,8 @@
 import streamlit as st
-import openai as ai
+from openai import OpenAI
 
-# Initialize OpenAI client (make sure you set your API key)
-client = ai(api_key="YOUR_OPENAI_API_KEY")
+# Initialize OpenAI client (API key should be stored in Streamlit Secrets)
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.set_page_config(page_title="AI Chatbot Prototype", page_icon="🤖")
 
@@ -11,13 +11,15 @@ st.write("Ask me anything! Powered by OpenAI GPT.")
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
-    st.session_state["messages"] = []
+    st.session_state["messages"] = [
+        {"role": "system", "content": "You are a helpful AI assistant."}
+    ]
 
-# Display chat history
+# Display chat history (skip system message)
 for msg in st.session_state["messages"]:
     if msg["role"] == "user":
         st.chat_message("user").markdown(msg["content"])
-    else:
+    elif msg["role"] == "assistant":
         st.chat_message("assistant").markdown(msg["content"])
 
 # User input
