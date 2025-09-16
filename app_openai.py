@@ -4,7 +4,7 @@ from openai import OpenAI
 # Initialize OpenAI client (API key should be stored in Streamlit Secrets)
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-st.set_page_config(page_title="AI Chatbot Prototype", page_icon="🤖")
+st.set_page_config(page_title="AI Chatbot", page_icon="🤖")
 
 st.title("🤖 AI Chatbot Prototype")
 st.write("Ask me anything! Powered by OpenAI GPT.")
